@@ -24,3 +24,14 @@
 - item_id: int, item: Item, user: User, importance: Annotated[int, Body()]
 - The `Annotated` type is used to add metadata to the parameters. In this case, it's used to add metadata to the `importance` parameter, to specify that it should be read as a body parameter.
 - Pydantic fields can be used to declare the type, validation and metadata of the parameters.
+
+## Response Model - Return Type
+
+- The `response_model` parameter is used to declare the type of the response body. It will be used to:
+  - Convert the output data to its corresponding model (if the data isn't already a Pydantic model).
+  - Validate the data and convert it to its corresponding model (if needed).
+  - Add a JSON Schema for the response, in the OpenAPI path operation.
+- The `response_model` parameter also works with the `async` path operation function. It is used to declare the type of the response body, and will be used to validate and convert the data, and to add a JSON Schema for the response, in the OpenAPI path operation.
+- status_code parameter is used to declare the status code of the response. It will be used to:
+  - Add a status code and description to the response in the OpenAPI path operation.
+  - Validate the response status code.
